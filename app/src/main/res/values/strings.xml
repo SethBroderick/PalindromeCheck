@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">PalindromeCheck</string>
+    <string name="edtxtUserWord">Please </string>
+
 </resources>

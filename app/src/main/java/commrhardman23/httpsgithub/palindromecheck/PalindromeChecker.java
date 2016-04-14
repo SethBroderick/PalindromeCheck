@@ -29,23 +29,27 @@ public class PalindromeChecker extends AppCompatActivity {
      */
     public void palindromeCheck(View vw){
 
-        //Set a variable equal to the user input
+            String userInput = edtxtUserWord.getText().toString();
+            Boolean isPalindrome = checkForPalindrome(userInput, 0);
 
-        //boolean isPalindrome = checkForPalindrome(userInput, 0, false);
-
-        //Check whether isPalindrome is true or false and print out a statement accordingly
+                 if  (isPalindrome == true) {
+                txtvwResult.setText("Yes, " + userInput + " is a Palindrome");
+            }   else {
+                 txtvwResult.setText("No, " + userInput + " is not a Palindrome"); }
 
     }
+
+    //Check whether isPalindrome is true or false and print out a statement accordingly
+
+
 
     /**
      * checkForPalindrome is a recursive method that checks for whether an inputted word is a
      * palindrome
      * @param word is the word that will be checked for whether it is a palindrome or not
      * @param index is the index currently being checked
-     * @param result is whether the word is a palindrome or not
      */
-    private boolean checkForPalindrome(String word, int index, boolean result){
-
+    private boolean checkForPalindrome(String word, int index) {
 
         /**
          * Set a variable called indexFromEnd that is the corresponding index from the end that
@@ -62,8 +66,31 @@ public class PalindromeChecker extends AppCompatActivity {
          * The last statement of your method should be to return result
          *
          */
+        int indexFromEnd = word.length() - (index + 1);
+        boolean result;
+        if (word.charAt(index) == word.charAt(indexFromEnd)) {
+            if (index == indexFromEnd - 1 || index == indexFromEnd)
+            {
+                result = true;
+
+            }else {
+                index = index + 1;
+                result = checkForPalindrome(word, index);
+
+            }
+        }
+
+        else{
+            result = false;
+        }
 
         return result;
-
     }
 }
+
+
+
+
+
+
+
